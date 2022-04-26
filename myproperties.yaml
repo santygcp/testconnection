@@ -1,0 +1,47 @@
+cluster:
+  clusterSpec:
+    replicas: 3
+    additionalStartArgs:
+      - '--ignore=thp'
+    image:
+      repository: "voltdb/voltdb-enterprise"
+      tag: "11.2.2"
+      pullPolicy: "Always"
+    persistentVolume:
+      size: "4Gi"
+    deletePVC: 'true'
+    resources:
+      requests:
+        memory: "4Gi"
+        cpu: "4"
+      limits:
+        memory: "4Gi"
+        cpu: "4"
+    nodeSelector:
+      env: "db"
+  config:
+    deployment:
+      cluster:
+        kfactor: 1
+        sitesperhost: 4
+      commandlog:
+        enabled: 'false'
+        synchronous: 'false'
+        logsize: 3072
+        frequency:
+           time: 5000
+      snapshot:
+        enabled: 'false'
+        frequency: '24h'
+        prefix: 'SNAP'
+        retain: '2'
+      export:
+        configurations:
+        - target: "finevent"
+          type: kafka
+          enabled: 'true'
+          properties:
+            bootstrap.servers: "kafka-0.kafka-headless.kafka.svc.cluster.local:9092"
+            topic.key: "user_financial_events.finevent"
+  serviceSpec:
+    type: "NodePort"

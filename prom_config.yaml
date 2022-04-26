@@ -1,0 +1,20 @@
+prometheus:
+  prometheusSpec:
+    podMetadata:
+      labels:
+        app: prometheus
+    serviceMonitorSelectorNilUsesHelmValues: false
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: standard
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+grafana:
+  service:
+    type: LoadBalancer
+  adminPassword: admin
+  persistence:
+    enabled: true
