@@ -1,0 +1,20 @@
+apiVersion: batch/v1 
+kind: Job 
+metadata:   
+  name: chargingjob 
+  labels:     
+    jobgroup: testclient 
+spec:   
+  template:     
+    metadata:       
+      name: kubejob       
+      labels:         
+        jobgroup: testclient     
+    spec:       
+      containers:       
+      - name: c         
+        image: jadejakajal13/vanilla:11   
+        args: ["java", "-jar", "voltdb-chargingdemo.jar", "mydb-voltdb-cluster-client.voltdb.svc.cluster.local", "1000000", "500000", "4", "TRANSACTIONS", "10", "900", "300", "100000", "0"]       
+      restartPolicy: OnFailure
+      nodeSelector:
+        env: "client"
