@@ -1,6 +1,6 @@
 #!/bin/sh
 #Variables
-CLUSTER_NAME="santosh-lab"
+CLUSTER_NAME=$1
 MACHINE_TYPE="c2-standard-8"
 NUM_NODES="5"
 MONITORING_NS="monitoring"
