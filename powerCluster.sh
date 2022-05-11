@@ -2,7 +2,7 @@
 #Variables
 CLUSTER_NAME=$1
 MACHINE_TYPE="c2-standard-8"
-NUM_NODES="5"
+NUM_NODES=$2
 MONITORING_NS="monitoring"
 VOLT_NS="voltdb"
 KAFKA_NS="kafka"
