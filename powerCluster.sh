@@ -13,7 +13,7 @@ MONITORING_VERSION="10.1.0"
 VOLT_DEPLPOYMENTNAME="mydb"
 PROPERTY_FILE="myproperties.yaml"
 LICENSE_FILE="/opt/voltdb/voltdb/license.xml"
-COMMANDLOG_ENABLED="false"
+COMMANDLOG_ENABLED="true"
 SNAPSHOT_ENABLED="false"
 ZK_SVC="zookeeper.kafka.svc.cluster.local"
 
