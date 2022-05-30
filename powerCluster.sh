@@ -83,7 +83,8 @@ kubectl cp schema/voltdb-chargingdemo.jar  mydb-voltdb-cluster-0:/tmp/ -n $VOLT_
 
 kubectl exec -it mydb-voltdb-cluster-0 -n $VOLT_NS -- sqlcmd < schema/db.sql
 
-#kubectl create -f usersJob.yaml -n $VOLT_NS
+kubectl create -f usersJob.yaml -n $VOLT_NS
+kubectl create -f testClient.yaml -n $VOLT_NS
 
 echo "IP for UI access"
 kubectl get nodes -o wide | tail -1 | awk -F " " {'print $7'}
