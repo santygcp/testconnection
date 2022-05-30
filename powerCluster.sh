@@ -20,7 +20,7 @@ ZK_SVC="zookeeper.kafka.svc.cluster.local"
 #creating a cluster
 #gcloud container clusters create   --machine-type $MACHINE_TYPE  --image-type UBUNTU_CONTAINERD  --num-nodes $NUM_NODES   --cluster-version 1.19.13-gke.1900 $CLUSTER_NAME
 
-gcloud container clusters create  --machine-type $MACHINE_TYPE  --image-type UBUNTU_CONTAINERD  --num-nodes $NUM_NODES --zone us-central1-b  $CLUSTER_NAME
+gcloud container clusters create  --machine-type $MACHINE_TYPE  --image-type UBUNTU_CONTAINERD  --num-nodes $NUM_NODES  --disk-size=256G --zone us-central1-b  $CLUSTER_NAME
 
 
 #CPU pinning properties file
